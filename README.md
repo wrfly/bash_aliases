@@ -1,6 +1,6 @@
 # .bash_alias
-A project to collect useful bash alias.
+A project to collect useful bash aliases and functions.
 
-You can pull request if you hava any useful alias.
+You can pull request if you hava any useful aliases or functions to make things easy.
 
-alias-make things better~
+Alias--make things better~
