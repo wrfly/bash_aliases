@@ -25,4 +25,5 @@ md5(){ echo -n "$1" | md5sum; }
 ipadrs(){ curl ipinfo.io/$1; echo "";}
 wh(){ whois $1 ;}
 p(){ url1=$1;url2=`echo ${url1#http://}`;url=`echo ${url2%%/**}`;ping -c 5 $url; }
+alias ping='p' #enable ping http://www.github.com/hello
 mcd(){ mkdir -p "$1"; cd "$1";}
