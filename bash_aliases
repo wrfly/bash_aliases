@@ -4,6 +4,7 @@ alias la='ls -A'
 alias l='ls -ltrhA'
 alias ..='cd ../'
 alias ...='cd ../..'
+alias gl='ls|grep --color'
 
 #about terminal
 alias c='clear'
