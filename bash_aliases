@@ -28,3 +28,5 @@ wh(){ whois $1 ;}
 p(){ url1=$1;url2=`echo ${url1#http://}`;url=`echo ${url2%%/**}`;ping -c 5 $url; }
 alias ping='p' #enable ping http://www.github.com/hello
 mcd(){ mkdir -p "$1"; cd "$1";}
+c-iconv() { iconv -f gbk -t utf8 $1 -o $1 ;} # iconv more easier
+
