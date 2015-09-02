@@ -10,22 +10,33 @@ alias gl='ls|grep --color'
 alias c='clear'
 alias r='reset'
 
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+alias vps='ssh root@8.8.8.8 -p 888 -i /home/mr/.ssh/vps_pri'
+
 #about files
 alias f='file'
 alias s='stat'
+alias rm='rm -i'
+alias opwd='nautilus .'
 
 #others
 alias mkdir='mkdir -pv'
 alias top='htop' # you should install htop first
+alias bc='bc -ql'
+f-gitpush() { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push || echo "WARNING! This is not a git folder."; }
+f-unzip() { unzip -O cp936 $1; } #解决乱码问题
+f-iconv() { for i in "$@";do iconv -f gbk -t utf8 "$1" -o "$1"; shift;done; } # iconv more easier
+mcd(){ mkdir -p "$@" && cd "$@";}
 
 #about system
 alias update='sudo apt-get update && sudo apt-get upgrade'
 
 #functions
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' #Get your wan ipaddress
 md5(){ echo -n "$1" | md5sum; }
 ipadrs(){ curl ipinfo.io/$1; echo "";}
 wh(){ whois $1 ;}
-p(){ url1=$1;url2=`echo ${url1#http://}`;url=`echo ${url2%%/**}`;ping -c 5 $url; }
+p(){ url1="$1";url2=${url1#*://};url=${url2%%/**};ping -c 5 $url; }
 alias ping='p' #enable ping http://www.github.com/hello
 mcd(){ mkdir -p "$1"; cd "$1";}
 c-iconv() { iconv -f gbk -t utf8 $1 -o $1 ;} # iconv more easier
