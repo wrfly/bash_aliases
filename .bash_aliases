@@ -23,9 +23,12 @@ alias opwd='nautilus .'
 alias mkdir='mkdir -pv'
 alias top='htop' # you should install htop first
 alias bc='bc -ql'
+alias vps='ssh root@your_vps_address -p port'
+
 f-gitpush() { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push || echo "WARNING! This is not a git folder."; }
 f-unzip() { unzip -O cp936 $1; } #解决乱码问题
 f-iconv() { for i in "$@";do iconv -f gbk -t utf8 "$1" -o "$1"; shift;done; } # iconv more easier
+
 mcd(){ mkdir -p "$@" && cd "$@";}
 alias update='sudo apt-get update && sudo apt-get upgrade'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' #Get your wan ipaddress
