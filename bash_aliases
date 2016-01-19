@@ -43,7 +43,7 @@ cat(){ /bin/cat $@ | lolcat; } # install lolcat first
 
 # 压缩解压
 function tarz() {
-        [ "$1" != "" ] && tar -czRf $1.tat.gz $1 && echo "$1.tar.gz created successfully!"|| echo "Usage: tarz [folder_or_file]"
+        [ "$1" != "" ] && tar -czRf $1.tar.gz $1 && echo "$1.tar.gz created successfully!"|| echo "Usage: tarz [folder_or_file]"
 }
 
 function tarj() {
