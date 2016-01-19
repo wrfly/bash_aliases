@@ -47,7 +47,7 @@ function tarz() {
 }
 
 function tarj() {
-        [ "$1" != "" ] && tar -cjRf $1.tar.bz2 $1 && echo "$1.tar.bz2 created successfully!" || echo "Usage: tarz [folder_or_file]"
+        [ "$1" != "" ] && tar -cjRf $1.tar.bz2 $1 && echo "$1.tar.bz2 created successfully!" || echo "Usage: tarj [folder_or_file]"
 }
 
 function utar() {
