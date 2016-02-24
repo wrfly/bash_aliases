@@ -20,6 +20,7 @@ alias f='file'
 alias s='stat'
 alias rm='rm -i'
 alias opwd='nautilus .'
+alias svi='sudo vi' #超级用户权限写入
 
 #Other functions
 alias mkdir='mkdir -pv' # 建立多层目录
