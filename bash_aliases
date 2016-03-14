@@ -10,11 +10,12 @@ alias gl='ls|grep --color'
 alias c='clear'
 alias r='reset'
 
+#others
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias ghistory="history | grep"
 alias port='netstat -tulanp'
 alias listen="lsof -P -i -n" 
-
+alias ?='man' #haha
 
 alias f='file'
 alias s='stat'
