@@ -58,7 +58,6 @@ function vps-ctl(){
             vps-2 "$command"
         echo -n "vps-3: "
             vps-3 "$command"
-    fi
 }
 
 # 压缩解压
