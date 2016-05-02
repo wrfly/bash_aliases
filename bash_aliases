@@ -28,12 +28,12 @@ alias mkdir='mkdir -pv' # 建立多层目录
 alias top='htop' # you should install htop first
 alias bc='bc -ql' # 预先导入数学库
 
-f-gitpush() { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push || echo "WARNING! This is not a git folder."; }
+f-gitpush() { { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push; } || echo "WARNING! This is not a git folder."; }
 f-unzip() { unzip -O cp936 $1; } #解决解压时候的乱码问题
 f-iconv() { for i in "$@";do iconv -f gbk -t utf8 "$1" -o "$1"; shift;done; } # 更快的转换编码
 
 mcd(){ mkdir -p "$@" && cd "$@";} # 建立之后再进入
-alias update='sudo apt-get update && sudo apt-get upgrade' # 一步到位
+alias update='sudo apt update && sudo apt upgrade' # Ubuntu 16.04
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' # 得到公网IP
 md5(){ echo -n "$1" | md5sum; } # 生成MD5
 ipadrs(){ curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你的IP地址
