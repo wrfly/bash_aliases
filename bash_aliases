@@ -27,6 +27,8 @@ alias svi='sudo vi' #超级用户权限写入
 alias mkdir='mkdir -pv' # 建立多层目录
 alias top='htop' # you should install htop first
 alias bc='bc -ql' # 预先导入数学库
+alias genpass="head -c 32 /dev/random | base64 | sed "s:[+=/]::g" | head -c 32"
+
 
 f-gitpush() { { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push; } || echo "WARNING! This is not a git folder."; }
 f-unzip() { unzip -O cp936 $1; } #解决解压时候的乱码问题
@@ -40,7 +42,6 @@ ipadrs(){ curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你
 p(){ url1="$1";url2=${url1#*://};url=${url2%%/**};/bin/ping -c 5 $url; }
 # p(){ url=`echo $1 | sed "s:\(.*//\(.*\)/.*\):\2:g"`;/bin/ping -c 5 $url; } # 另一种方法截取URL地址
 alias ping='p' # Enable ping http://www.github.com/hello
-cat(){ /bin/cat $@ | lolcat; } # install lolcat first
 
 # VPS相关
 alias vps='ssh root@your_vps_address -p port -i ~/.ssh/identify' # 登陆VPS
