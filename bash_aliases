@@ -96,9 +96,14 @@ function extract() {
      fi 
 }
 
+# 系统相关
 function ps? () {
         echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
         ps aux | grep $1
 }
 
-
+# curl json
+function cjson ()
+{ 
+        curl -s $1 | python -mjson.tool
+}
