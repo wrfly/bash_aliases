@@ -1,0 +1,38 @@
+# Some useful commands to use docker.
+# Author: wrfly <mr.wrflt@gmail.com>
+# Updated at: 2017-3-8
+
+# clean stopped containers
+function docker-clean(){
+    sdiff <(docker ps -qa|sort) <(docker ps -q|sort) | grep '<' | cut -d ' ' -f 1 | for c in `xargs`;do sudo docker rm -v $c; done
+    # diff --side-by-side --suppress-common-lines <(docker ps -qa|sort) <(docker ps -q|sort) | cut -d' ' -f1
+    # sdiff <(docker ps -qa|sort) <(docker ps -q|sort) | grep '<' | cut -d ' ' -f 1 
+    # comm <(sudo docker ps -qa|sort) <(sudo docker ps -q|sort) --output-delimiter ':' | grep -E '^[^:]' --color=no
+}
+
+# about inspect
+alias docker-pid="sudo docker inspect --format '{{.State.Pid}}'"
+alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# get into the container
+alias de='docker-enter'
+function docker-enter() {
+	cid=$1
+	sudo docker exec -ti -e TERM=xterm $cid bash || sudo docker exec -ti -e TERM=xterm $cid sh
+}
+
+# docker stop and remove
+function drm() {
+    docker stop $1 && docker rm $1
+}
+
+# clean unused images
+alias docker-clean-unused-images="sdiff <(sudo docker images -q|sort) <(sudo docker ps -qa | xargs sudo docker inspect --format '{{ .Image }}' | cut -d ':' -f2 | cut -c 1-12 | sort -u) | grep '<' | cut -d ' ' -f 1 | xargs sudo docker rmi"
+
+# remove <none> images
+function docker-remove-none-images() {
+	images=$(sudo docker images | grep '<none>' | awk '{print $3}')
+	for i in `echo $images`;do
+		sudo docker rmi $i
+	done
+}
