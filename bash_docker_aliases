@@ -36,3 +36,6 @@ function docker-remove-none-images() {
 		sudo docker rmi $i
 	done
 }
+
+# ctop (container top)
+alias ctop='docker run -ti --name ctop --rm -v /var/run/docker.sock:/var/run/docker.sock wrfly/ctop:latest'
