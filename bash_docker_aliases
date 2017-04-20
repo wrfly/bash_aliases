@@ -18,7 +18,7 @@ alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'
 alias de='docker-enter'
 function docker-enter() {
 	cid=$1
-	sudo docker exec -ti -e TERM=xterm $cid sh || sudo docker exec -ti -e TERM=xterm $cid bash
+	sudo docker exec -ti -e TERM=xterm $cid bash || sudo docker exec -ti -e TERM=xterm $cid sh
 }
 
 # docker stop and remove
