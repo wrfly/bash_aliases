@@ -28,6 +28,8 @@ alias mkdir='mkdir -pv' # 建立多层目录
 alias top='htop' # you should install htop first
 alias bc='bc -ql' # 预先导入数学库
 alias genpass="head -c 32 /dev/random | base64 | sed "s:[+=/]::g" | head -c 32"
+# 将url字符的文件名，重命名为utf-8字符
+alias urldecode='python -c "import sys, os, urllib as ul; name = ul.unquote_plus(sys.argv[1]); print name; os.rename(sys.argv[1], name)"'
 
 
 f-gitpush() { { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push; } || echo "WARNING! This is not a git folder."; }
