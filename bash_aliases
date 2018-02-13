@@ -41,6 +41,7 @@ alias update='sudo apt update && sudo apt upgrade' # Ubuntu 16.04
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' # 得到公网IP
 md5(){ echo -n "$1" | md5sum; } # 生成MD5
 ipadrs(){ curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你的IP地址
+# or curl -s ip.chinaz.com/getip.aspx | cut -d "'" -f2
 p(){ url1="$1";url2=${url1#*://};url=${url2%%/**};/bin/ping -c 5 $url; }
 # p(){ url=`echo $1 | sed "s:\(.*//\(.*\)/.*\):\2:g"`;/bin/ping -c 5 $url; } # 另一种方法截取URL地址
 alias ping='p' # Enable ping http://www.github.com/hello
