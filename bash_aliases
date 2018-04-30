@@ -31,17 +31,18 @@ alias genpass="head -c 32 /dev/random | base64 | sed "s:[+=/]::g" | head -c 32"
 # 将url字符的文件名，重命名为utf-8字符
 alias urldecode='python -c "import sys, os, urllib as ul; name = ul.unquote_plus(sys.argv[1]); print name; os.rename(sys.argv[1], name)"'
 
-
 f-gitpush() { { cd .git &> /dev/null && cd .. && git add -A && git commit -m "${1:-push`date`}" && git push; } || echo "WARNING! This is not a git folder."; }
 f-unzip() { unzip -O cp936 $1; } #解决解压时候的乱码问题
 f-iconv() { for i in "$@";do iconv -f gbk -t utf8 "$1" -o "$1"; shift;done; } # 更快的转换编码
 
 mcd(){ mkdir -p "$@" && cd "$@";} # 建立之后再进入
-alias update='sudo apt update && sudo apt upgrade' # Ubuntu 16.04
-alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' # 得到公网IP
 md5(){ echo -n "$1" | md5sum; } # 生成MD5
+
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' # 得到公网IP
 ipadrs(){ curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你的IP地址
+# or curl ip.kfd.me
 # or curl -s ip.chinaz.com/getip.aspx | cut -d "'" -f2
+
 p(){ url1="$1";url2=${url1#*://};url=${url2%%/**};/bin/ping -c 5 $url; }
 # p(){ url=`echo $1 | sed "s:\(.*//\(.*\)/.*\):\2:g"`;/bin/ping -c 5 $url; } # 另一种方法截取URL地址
 alias ping='p' # Enable ping http://www.github.com/hello
@@ -110,3 +111,6 @@ function cjson ()
 { 
         curl -s $1 | python -mjson.tool
 }
+
+# proxy support
+alias glide="http_proxy=socks5://localhost:1080 glide" # glide proxy
