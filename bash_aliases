@@ -113,4 +113,4 @@ function cjson ()
 }
 
 # proxy support
-alias glide="http_proxy=socks5://localhost:1080 glide" # glide proxy
+alias glide="https_proxy=socks5://localhost:1080 http_proxy=socks5://localhost:1080 glide" # glide proxy
