@@ -39,13 +39,13 @@ mcd(){ mkdir -p "$@" && cd "$@";} # 建立之后再进入
 md5(){ echo -n "$1" | md5sum; } # 生成MD5
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com' # 得到公网IP
-ipadrs(){ curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你的IP地址
+ipadrs() { curl ipinfo.io/$1; echo "";} # 查看某个IP的地理位置/查看你的IP地址
 # or curl ip.kfd.me
 # or curl -s ip.chinaz.com/getip.aspx | cut -d "'" -f2
 
-p(){ url1="$1";url2=${url1#*://};url=${url2%%/**};/bin/ping -c 5 $url; }
-# p(){ url=`echo $1 | sed "s:\(.*//\(.*\)/.*\):\2:g"`;/bin/ping -c 5 $url; } # 另一种方法截取URL地址
-alias ping='p' # Enable ping http://www.github.com/hello
+# Enable p http://www.github.com/hello
+piing() { /bin/ping -A -c 5 $(echo $1 | cut -d "/" -f3) } # piing https://github.com/404/403
+diig() { dig $(echo $1 | cut -d "/" -f3) } # diig https://www.google.com/404/403
 
 # VPS相关
 alias vps='ssh root@your_vps_address -p port -i ~/.ssh/identify' # 登陆VPS
