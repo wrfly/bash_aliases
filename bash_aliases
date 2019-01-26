@@ -114,3 +114,11 @@ function cjson ()
 
 # proxy support
 alias glide="https_proxy=socks5://localhost:1080 http_proxy=socks5://localhost:1080 glide" # glide proxy
+
+# grep history
+alias hgrep="history | grep"
+
+# friendly cat
+function cat(){
+    /bin/cat $@ | head -n100
+}
