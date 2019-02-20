@@ -122,3 +122,7 @@ alias hgrep="history | grep"
 function cat(){
     /bin/cat $@ | head -n100
 }
+
+# analyze who contribute how many codes
+# see https://gist.github.com/amitchhajer/4461043
+alias git-analyze="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
